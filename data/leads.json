@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1773503844313",
+    "date": "2026-03-14T15:57:24.313Z",
+    "name": "Test User",
+    "phone": "+380123456789",
+    "trigger": "Не визначено",
+    "score": 0,
+    "intent": "",
+    "summary": "",
+    "chatLog": [
+      {
+        "role": "assistant",
+        "content": "Вас турбує гострий дискомфорт зараз, чи ви плануєте плановий огляд і консультацію гастроентеролога?"
+      },
+      {
+        "role": "user",
+        "content": "stomach hurts after eating"
+      },
+      {
+        "role": "assistant"
+      }
+    ],
+    "status": "Новий",
+    "source": "Chat Bot"
+  },
+  {
+    "id": "1773504092846",
+    "date": "2026-03-14T16:01:32.846Z",
+    "name": "Test User",
+    "phone": "+380991234567",
+    "trigger": "Не визначено",
+    "score": 0,
+    "intent": "",
+    "summary": "",
+    "chatLog": [
+      {
+        "role": "assistant",
+        "content": "Вас турбує гострий дискомфорт зараз, чи ви плануєте плановий огляд і консультацію гастроентеролога?"
+      },
+      {
+        "role": "user",
+        "content": "stomach hurts"
+      },
+      {
+        "role": "assistant"
+      }
+    ],
+    "status": "Новий",
+    "source": "Chat Bot"
+  }
+]
