@@ -57,8 +57,12 @@ export async function POST(req: Request) {
     let kb = [];
     try {
       const fileData = await fs.readFile(kbPath, 'utf-8');
-      kb = JSON.parse(fileData);
-    } catch (err) {}
+      if (fileData) {
+        kb = JSON.parse(fileData);
+      }
+    } catch (err) {
+      console.warn("Could not read KB file, starting with empty array. This is expected on read-only filesystems.");
+    }
 
     const newItem = {
       id: Date.now().toString(),

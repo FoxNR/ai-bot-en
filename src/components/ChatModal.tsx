@@ -186,7 +186,7 @@ export default function ChatModal() {
                 {renderMessageContent(msg.content)}
               </div>
             </div>
-            {msg.role === 'assistant' && (
+            {msg.role === 'assistant' && idx > 0 && (
               <div className={`${styles.messageWrapper} ${styles.assistantWrapper} ${styles.ctaWrapper}`}>
                 <ContactWidget onSubmit={handleWidgetSubmit} />
               </div>
