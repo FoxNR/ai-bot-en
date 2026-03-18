@@ -154,10 +154,15 @@ export default function ChatModal() {
 
     // 2. Netlify Forms submission
     try {
+      const full_transcript = messages
+        .map(m => `${m.role === 'user' ? 'Клієнт' : 'Бот'}: ${m.content}`)
+        .join('\n\n');
+
       const body = new URLSearchParams();
       body.append("form-name", "chat-leads");
       body.append("name", data.name || "");
       body.append("phone", data.phone || "");
+      body.append("full_transcript", encodeURIComponent(full_transcript));
 
       await fetch("/", {
         method: "POST",
