@@ -152,25 +152,29 @@ export default function ChatModal() {
       console.error("Internal API error:", err);
     }
 
-    // 2. Netlify Forms submission
+    // 2. Netlify Forms submission (per official Netlify docs)
     try {
+      const encode = (formData: Record<string, string>) =>
+        Object.keys(formData)
+          .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]))
+          .join('&');
+
       const full_transcript = messages
         .map(m => `${m.role === 'user' ? 'Клієнт' : 'Бот'}: ${m.content}`)
         .join('\n\n');
 
-      const body = new URLSearchParams();
-      body.append("form-name", "chat-leads");
-      body.append("name", data.name || "");
-      body.append("phone", data.phone || "");
-      body.append("full_transcript", encodeURIComponent(full_transcript));
-
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'chat-leads',
+          'name': data.name || '',
+          'phone': data.phone || '',
+          'full_transcript': full_transcript,
+        }),
       });
     } catch (err) {
-      console.error("Netlify Form error:", err);
+      console.error('Netlify Form error:', err);
     }
   };
 
