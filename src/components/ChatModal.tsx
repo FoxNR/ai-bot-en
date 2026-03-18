@@ -251,8 +251,9 @@ export default function ChatModal() {
 
       {/* Hidden form for Netlify detection */}
       <form name="chat-leads" data-netlify="true" hidden>
-        <input type="text" name="name" required />
-        <input type="tel" name="phone" required />
+        <input type="text" name="name" />
+        <input type="tel" name="phone" />
+        <textarea name="full_transcript"></textarea>
       </form>
 
       <div className={styles.inputArea}>
