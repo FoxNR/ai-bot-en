@@ -12,12 +12,12 @@ export async function POST(req: Request) {
       date: new Date().toISOString(),
       name: data.name,
       phone: data.phone,
-      trigger: data.trigger || 'Не визначено',
+      trigger: data.trigger || 'Undefined',
       score: data.score || 0,
       intent: data.intent || '',
       summary: data.summary || '',
       chatLog: data.chatLog || [],
-      status: 'Новий',
+      status: 'New',
       source: 'Chat Bot'
     };
 
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
     try {
       if (data.chatLog && Array.isArray(data.chatLog)) {
         const full_transcript = data.chatLog
-          .map((m: any) => `${m.role === 'user' ? 'Клієнт' : 'Бот'}: ${m.content}`)
+          .map((m: any) => `${m.role === 'user' ? 'Client' : 'Bot'}: ${m.content}`)
           .join('\n\n');
 
         const encode = (formData: Record<string, string>) =>

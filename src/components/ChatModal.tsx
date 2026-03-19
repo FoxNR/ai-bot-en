@@ -32,7 +32,7 @@ const ContactWidget = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
   if (submitted) {
     return (
       <div className={styles.ctaContainer}>
-         <div className={styles.ctaText}>Дякую! Вашу заявку надіслано.</div>
+      <div className={styles.ctaText}>Thank you! Your request has been sent.</div>
       </div>
     );
   }
@@ -47,13 +47,13 @@ const ContactWidget = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
           <div className={`${styles.expandableFields} ${isOpen ? styles.open : ''}`}>
              <input 
                type="text" 
-               placeholder="Ваше ім'я" 
+               placeholder="Your name" 
                value={name} 
                onChange={e => setName(e.target.value)} 
                required={isOpen} 
                className={styles.inputField} 
                onFocus={(e) => e.target.placeholder = ''} 
-               onBlur={(e) => e.target.placeholder = "Ваше ім'я"} 
+               onBlur={(e) => e.target.placeholder = "Your name"} 
              />
              <input 
                type="tel" 
@@ -74,7 +74,7 @@ const ContactWidget = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
                 } 
              }}
           >
-            Залишити заявку
+            Submit request
           </button>
         </form>
       </div>
@@ -84,7 +84,7 @@ const ContactWidget = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
 
 export default function ChatModal() {
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant', content: string }[]>([
-    { role: 'assistant', content: 'Вітаю! Я AI-консультант медичного центру Салютем. Яка причина вашого звернення?' }
+    { role: 'assistant', content: 'Hello! I am the AI consultant for the Salutem Medical Center. What is the reason for your visit?' }
   ]);
   const [input, setInput] = useState('');
   const [isThinking, setIsThinking] = useState(false);
@@ -134,7 +134,7 @@ export default function ChatModal() {
       }
     } catch (error) {
       console.error("Error communicating with AI:", error);
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Вибачте, сталася помилка з\'єднання. Спробуйте ще раз.' }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, a connection error occurred. Please try again.' }]);
     } finally {
       setIsThinking(false);
     }
@@ -160,7 +160,7 @@ export default function ChatModal() {
           .join('&');
 
       const full_transcript = messages
-        .map(m => `${m.role === 'user' ? 'Клієнт' : 'Бот'}: ${m.content}`)
+        .map(m => `${m.role === 'user' ? 'Client' : 'Bot'}: ${m.content}`)
         .join('\n\n');
 
       await fetch('/__forms.html', {
@@ -209,8 +209,8 @@ export default function ChatModal() {
         <div className={styles.headerTitle}>
           <div className={styles.onlineIndicator}></div>
           <div>
-            <h3>Координатор Салютем</h3>
-            <p>Медичний центр</p>
+            <h3>Salutem Coordinator</h3>
+            <p>Medical Center</p>
           </div>
         </div>
       </div>
@@ -262,7 +262,7 @@ export default function ChatModal() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-          placeholder="Напишіть відповідь..."
+          placeholder="Write a response..."
           className={styles.textInput}
         />
         <button onClick={handleSend} className={styles.sendButton} disabled={!input.trim()}>
